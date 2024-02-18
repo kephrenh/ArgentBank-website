@@ -11,7 +11,7 @@ export const getLogin = async credentials => {
     },
     method: "POST",
   }).then(response => response.json());
-  console.clear();
+  // console.clear();
   return await getLoginData(loginResponse);
 };
 
@@ -27,7 +27,7 @@ export const getLoginFetch = async token => {
     method: "POST",
   }).then(response => response.json());
 
-  console.clear();
+  // console.clear();
   return await getLoginFetchData(loginFetchResponse);
 };
 
@@ -43,6 +43,6 @@ export const saveUserProfile = async (token, fullName) => {
     },
     method: "PUT",
   }).then(response => response.json());
-  console.clear();
+  // console.clear();
   return await saveUserProfileData(saveUserProfileResponse);
 };

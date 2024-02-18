@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 function App() {
   return (
     <>
-      <Navbar title="Argent Bank" />
+      <Navbar title="Argent Bank" firstName="Tony" loginText="Sign In" logoutText="Sign Out" />
       <Outlet />
       <Footer text="Copyright 2020 Argent Bank" />
     </>
