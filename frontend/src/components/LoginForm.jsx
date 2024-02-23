@@ -14,7 +14,7 @@ const LoginForm = ({ buttonText }) => {
   const [remember, setRemember] = useState(false);
 
   // Use Selector
-  const token = useSelector(state => state.token.value);
+  const token = useSelector((state) => state.token.value);
 
   // Use Effect
   useEffect(() => {
@@ -24,27 +24,42 @@ const LoginForm = ({ buttonText }) => {
   });
 
   // Handle Submit
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const login = getLogin({ email: email, password: password });
-    login.then(object => {
+    const login = getLogin({
+      email: email,
+      password: password,
+    });
+
+    login.then((object) => {
       if (object.status !== 400) {
         setLoginStatus(object.status);
         addToken(object.token);
+        localStorage.setItem("isLogged", JSON.stringify(true));
       } else {
         setLoginError(object.message);
       }
     });
   };
 
+  // Handle Email
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  // Handle Password
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
   // Handle Remember
-  const handleRemember = e => {
-    setRemember(e.target.checked);
+  const handleRemember = () => {
+    setRemember(!remember);
   };
 
   // Add the token
   const dispatch = useDispatch();
-  const addToken = token => {
+  const addToken = (token) => {
     if (remember === true) {
       localStorage.setItem("token", token);
     }
@@ -52,24 +67,38 @@ const LoginForm = ({ buttonText }) => {
   };
 
   // Redirection
-  if (token !== 0 || loginStatus === 200 || token === localStorage.getItem("token"))
+  if (
+    token !== 0 ||
+    loginStatus === 200 ||
+    token === localStorage.getItem("token")
+  )
     return <Navigate to="/profile" />;
 
   return (
     <form onSubmit={handleSubmit}>
       <div className="input-wrapper">
         <label htmlFor="username">Username</label>
-        <input type="text" id="username" onChange={e => setEmail(e.target.value)} />
+        <input type="text" id="username" value={email} onChange={handleEmail} />
       </div>
       <div className="input-wrapper">
         <label htmlFor="password">Password</label>
-        <input type="password" id="password" onChange={e => setPassword(e.target.value)} />
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={handlePassword}
+        />
       </div>
       <div className="input-remember">
-        <input type="checkbox" id="remember-me" onChange={handleRemember} />
+        <input
+          type="checkbox"
+          checked={remember}
+          id="remember-me"
+          onChange={handleRemember}
+        />
         <label htmlFor="remember-me">Remember me</label>
       </div>
-      <div>{loginError}</div>
+      <p>{loginError}</p>
       <button className="sign-in-button">{buttonText}</button>
     </form>
   );
