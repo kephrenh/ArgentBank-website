@@ -1,0 +1,39 @@
+.edit-section {
+  display: none;
+}
+
+.edit-section-title {
+  font-size: 28px;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.edit-label {
+  display: inline-block;
+  width: 7rem;
+}
+
+.edit-input {
+  width: 8rem;
+}
+
+.buttons-section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.button {
+  width: 6rem;
+  height: 2rem;
+  color: #fff;
+  border: none;
+  letter-spacing: 2px;
+  border-radius: 2px;
+  background-color: #42b983;
+}
