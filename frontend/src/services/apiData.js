@@ -18,7 +18,6 @@ export function getLoginData(data) {
 }
 
 /* Get Login Fetch */
-
 export function getLoginFetchData(data) {
   if (data.body !== undefined) {
     const object = {
@@ -26,6 +25,7 @@ export function getLoginFetchData(data) {
       email: data.body.email,
       firstName: data.body.firstName,
       lastName: data.body.lastName,
+      userName: data.body.userName,
     };
 
     return object;
@@ -35,6 +35,7 @@ export function getLoginFetchData(data) {
       email: "",
       firstName: "",
       lastName: "",
+      userName: "",
     };
     return object;
   }

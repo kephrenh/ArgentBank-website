@@ -11,7 +11,7 @@ export const getLogin = async credentials => {
     },
     method: "POST",
   }).then(response => response.json());
-  // console.clear();
+
   return await getLoginData(loginResponse);
 };
 
@@ -27,22 +27,21 @@ export const getLoginFetch = async token => {
     method: "POST",
   }).then(response => response.json());
 
-  // console.clear();
   return await getLoginFetchData(loginFetchResponse);
 };
 
 // Save new name
-export const saveUserProfile = async (token, fullName) => {
+export const saveUserProfile = async (token, userName) => {
   const API_URL = "http://localhost:3001/api/v1/user/profile";
 
   const saveUserProfileResponse = await fetch(API_URL, {
-    body: JSON.stringify(fullName),
+    body: JSON.stringify(userName),
     headers: {
       "Content-Type": "application/json",
       Authorization: "Bearer" + token,
     },
     method: "PUT",
   }).then(response => response.json());
-  // console.clear();
+
   return await saveUserProfileData(saveUserProfileResponse);
 };
