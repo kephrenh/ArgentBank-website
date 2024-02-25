@@ -14,7 +14,7 @@ const LoginForm = ({ buttonText }) => {
   const [remember, setRemember] = useState(false);
 
   // Use Selector
-  const token = useSelector((state) => state.token.value);
+  const token = useSelector(state => state.token.value);
 
   // Use Effect
   useEffect(() => {
@@ -24,14 +24,14 @@ const LoginForm = ({ buttonText }) => {
   });
 
   // Handle Submit
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     const login = getLogin({
       email: email,
       password: password,
     });
 
-    login.then((object) => {
+    login.then(object => {
       if (object.status !== 400) {
         setLoginStatus(object.status);
         addToken(object.token);
@@ -43,12 +43,12 @@ const LoginForm = ({ buttonText }) => {
   };
 
   // Handle Email
-  const handleEmail = (e) => {
+  const handleEmail = e => {
     setEmail(e.target.value);
   };
 
   // Handle Password
-  const handlePassword = (e) => {
+  const handlePassword = e => {
     setPassword(e.target.value);
   };
 
@@ -59,7 +59,7 @@ const LoginForm = ({ buttonText }) => {
 
   // Add the token
   const dispatch = useDispatch();
-  const addToken = (token) => {
+  const addToken = token => {
     if (remember === true) {
       localStorage.setItem("token", token);
     }
@@ -67,11 +67,7 @@ const LoginForm = ({ buttonText }) => {
   };
 
   // Redirection
-  if (
-    token !== 0 ||
-    loginStatus === 200 ||
-    token === localStorage.getItem("token")
-  )
+  if (token !== 0 || loginStatus === 200 || token === localStorage.getItem("token"))
     return <Navigate to="/profile" />;
 
   return (
@@ -82,20 +78,10 @@ const LoginForm = ({ buttonText }) => {
       </div>
       <div className="input-wrapper">
         <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={handlePassword}
-        />
+        <input type="password" id="password" value={password} onChange={handlePassword} />
       </div>
       <div className="input-remember">
-        <input
-          type="checkbox"
-          checked={remember}
-          id="remember-me"
-          onChange={handleRemember}
-        />
+        <input type="checkbox" checked={remember} id="remember-me" onChange={handleRemember} />
         <label htmlFor="remember-me">Remember me</label>
       </div>
       <p>{loginError}</p>
