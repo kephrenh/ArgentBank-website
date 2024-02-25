@@ -6,9 +6,9 @@ import { transactionData } from "../data/data";
 const User = () => {
   return (
     <main className="main bg-dark">
-      <ProfileHeader />
+      <ProfileHeader title="Welcome back" />
       <h2 className="sr-only">Accounts</h2>
-      {transactionData.map((transaction) => {
+      {transactionData.map(transaction => {
         return (
           <Account
             key={"account" + transaction.id}
