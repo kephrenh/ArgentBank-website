@@ -22,7 +22,7 @@ const Navbar = () => {
         dispatch(getUserName(object.userName));
       });
     }
-  });
+  }, [token, dispatch]);
 
   // Handle Logout
   const handleLogout = () => {
@@ -32,7 +32,6 @@ const Navbar = () => {
   };
 
   const connected = JSON.parse(localStorage.getItem("isLogged"));
-  console.log(!connected);
 
   return (
     <nav className="main-nav">
