@@ -30,6 +30,10 @@ const router = createBrowserRouter([
         element: <User />,
         errorElement: <Error />,
       },
+      {
+        path: "*",
+        element: <Error />,
+      },
     ],
   },
 ]);
