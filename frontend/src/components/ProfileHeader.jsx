@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 import { getFirstName } from "../features/firstNameSlice";
 import { getLastName } from "../features/lastNameSlice";
 import { getLoginFetch } from "../services/api";
@@ -20,11 +21,15 @@ const ProfileHeader = ({ title }) => {
     });
   }, [token, dispatch]);
 
+  // Open Edit Section
   const showEditSection = e => {
     e.preventDefault();
     const editSection = document.querySelector(".edit-section");
     editSection.style.display = "block";
   };
+
+  // Redirect to login page
+  if (token === 0) return <Navigate to="/login" />;
 
   return (
     <div className="header">
