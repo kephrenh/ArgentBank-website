@@ -84,7 +84,7 @@ const LoginForm = ({ buttonText }) => {
         <input type="checkbox" checked={remember} id="remember-me" onChange={handleRemember} />
         <label htmlFor="remember-me">Remember me</label>
       </div>
-      <p>{loginError}</p>
+      <p className="login-error">{loginError}</p>
       <button className="sign-in-button">{buttonText}</button>
     </form>
   );

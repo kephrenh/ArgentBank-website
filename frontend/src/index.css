@@ -211,6 +211,15 @@ body {
   font-size: 1.2rem;
 }
 
+.login-error {
+  color: #ff0000;
+  width: 100%;
+  text-align: start;
+  margin: 0;
+  padding-top: 1rem;
+  pointer-events: none;
+}
+
 .error {
   flex-grow: 1;
   display: flex;
