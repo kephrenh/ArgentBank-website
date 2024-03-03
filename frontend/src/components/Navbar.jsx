@@ -41,16 +41,16 @@ const Navbar = () => {
         <h1 className="sr-only">Argent Bank</h1>
       </NavLink>
 
-      <div>
+      <>
         {!connected ? (
-          <>
+          <div>
             <NavLink className="main-nav-item" to="/login">
               <i className="fa fa-user-circle"></i>
               Sign In
             </NavLink>
-          </>
+          </div>
         ) : (
-          <>
+          <div>
             <NavLink className="main-nav-item" to="./profile">
               <i className="fa fa-user-circle"></i>
               {userName}
@@ -59,9 +59,9 @@ const Navbar = () => {
               <i className="fa fa-sign-out"></i>
               Sign Out
             </NavLink>
-          </>
+          </div>
         )}
-      </div>
+      </>
     </nav>
   );
 };

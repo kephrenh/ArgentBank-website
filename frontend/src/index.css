@@ -340,3 +340,9 @@ body {
     width: 200px;
   }
 }
+
+@media (max-width: 435px) {
+  .main-nav {
+    flex-direction: column;
+  }
+}
