@@ -147,7 +147,7 @@ paths:
           description: Account not found
         "500":
           description: Internal Server Error
-  /transactions/{transactionID}/category:
+  /account/{accountID}/transactions/{transactionID}/category:
     put:
       tags:
         - Accounts and Transactions Module
@@ -156,6 +156,11 @@ paths:
       security:
         - Bearer: []
       parameters:
+        - in: path
+          name: accountID
+          description: ID of an account
+          required: true
+          type: string
         - in: path
           name: transactionID
           description: ID of a transaction
@@ -178,7 +183,7 @@ paths:
           description: Transaction not found
         "500":
           description: Internal Servor Error
-  /transactions/{transactionID}/note:
+  /account/{accountID}/transactions/{transactionID}/note:
     post:
       tags:
         - Accounts and Transactions Module
@@ -187,6 +192,11 @@ paths:
       security:
         - Bearer: []
       parameters:
+        - in: path
+          name: accountID
+          description: ID of an account
+          required: true
+          type: string
         - in: path
           name: transactionID
           description: ID of a transaction
@@ -209,7 +219,7 @@ paths:
           description: Note not created
         "500":
           description: Internal Server Error
-  /transactions/{transactionID}/note/{noteID}:
+  /account/{accountID}/transactions/{transactionID}/note/{noteID}:
     put:
       tags:
         - Accounts and Transactions Module
@@ -218,6 +228,11 @@ paths:
       security:
         - Bearer: []
       parameters:
+        - in: path
+          name: accountID
+          description: ID of an account
+          required: true
+          type: string
         - in: path
           name: transactionID
           description: ID of a transaction
@@ -253,6 +268,11 @@ paths:
       security:
         - Bearer: []
       parameters:
+        - in: path
+          name: accountID
+          description: ID of an account
+          required: true
+          type: string
         - in: path
           name: transactionID
           description: ID of a transaction
